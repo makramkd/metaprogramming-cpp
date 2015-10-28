@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/abs.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/enable_if.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/euclid.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/factorial.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/if.h" isTestSource="false" />

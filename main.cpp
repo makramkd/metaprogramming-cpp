@@ -1,11 +1,14 @@
 #include <iostream>
 
-#include "if.h"
+#include "inspect.h"
 
 int main() {
 
-    constexpr auto val = 3;
-    mpl::if_t<(val < 2), decltype(val), unsigned> val2 = 3;
+    constexpr auto value = 3;
+    constexpr auto val = 3.14;
 
-    
+    static_assert(mpl::equal_types<decltype(value), decltype(val)>::value, "Types are not equal!");
+    static_assert(mpl::equal_types<int, int>::value, "Types are not equal!!");
+
+
 }

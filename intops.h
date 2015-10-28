@@ -37,5 +37,20 @@ namespace mpl {
     struct mult {
         enum { value = N * M };
     };
+
+    // compile time integral constant
+    // useful for various other templates
+    template<typename integral, integral v>
+    struct integral_constant {
+        enum { value = v };
+    };
+
+    // alias template for bool constant
+    template<bool b>
+    using bool_constant = integral_constant<bool, b>;
+
+    // convenience types: true type and false type
+    using true_type = bool_constant<true>;
+    using false_type = bool_constant<false>;
 }
 #endif //MY_MPL_INTOPS_H

@@ -14,7 +14,9 @@ namespace mpl {
     template<typename T>
     using is_floating = is_any_of<T, float, const float,
             volatile float, const volatile float, double, const double,
-            volatile double, const volatile double>;
+            volatile double, const volatile double,
+            long double, const long double, volatile long double,
+            const volatile long double>;
 
     template<typename T>
     using is_integral = is_any_of<T, bool, char, char16_t, char32_t,
@@ -29,7 +31,7 @@ namespace mpl {
     template<typename T>
     using is_void = is_any_of<T, void, volatile void, const void,
             const volatile void>;
-    
+
 }
 
 #endif //MY_MPL_TRAITS_H

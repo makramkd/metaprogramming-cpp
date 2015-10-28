@@ -50,6 +50,28 @@ namespace mpl {
     // true only if they match
     template<typename T> struct equal_types<T, T> : true_type { };
 
+    // generalizing equal_types:
+    // is the given type _one_ of the list of types?
+
+    // decl first
+    template<typename T, typename... types>
+    struct is_any_of;
+
+    // base case 1:
+    // given list is empty
+    template<typename T>
+    struct is_any_of<T> : false_type { };
+
+    // base case 2:
+    // the head of the list is the type we want
+    template<typename T, typename... types>
+    struct is_any_of<T, T, types...> : true_type { };
+
+    // recursion:
+    // head is not the type we want: inspect the tail of the list
+    template<typename T, typename T0, typename... types>
+    struct is_any_of<T, T0, types...> : is_any_of<T, types...> { };
+
     // is_void:
     // check if the return type of a function is void!
     template<typename T> struct is_void : false_type { };

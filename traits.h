@@ -5,6 +5,7 @@
 #ifndef MY_MPL_TRAITS_H
 #define MY_MPL_TRAITS_H
 
+#include <cstddef>
 #include "inspect.h"
 
 namespace mpl {
@@ -32,6 +33,20 @@ namespace mpl {
     using is_void = is_any_of<T, void, volatile void, const void,
             const volatile void>;
 
+
+    // is_null_pointer
+    template<typename T>
+    using is_null_pointer = is_any_of<T, std::nullptr_t,
+            const std::nullptr_t, volatile std::nullptr_t,
+            const volatile std::nullptr_t>;
+
+    // this is probably incomplete
+    template<typename T>
+    struct is_array : false_type {};
+
+    template<typename T, int N>
+    struct is_array<T[N]> : true_type { };
+    
 }
 
 #endif //MY_MPL_TRAITS_H

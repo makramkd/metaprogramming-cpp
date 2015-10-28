@@ -11,6 +11,8 @@ namespace mpl {
     // these can be written out manually in
     // constexpr but its more convenient to
     // have metafunctions
+    // need to find a way to do this for all
+    // integral types
     template<int N, int M>
     struct add {
         enum { value = N + M };

@@ -3,5 +3,5 @@ project(my_mpl)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp abs.h power.h factorial.h intops.h euclid.h)
 add_executable(my_mpl ${SOURCE_FILES})

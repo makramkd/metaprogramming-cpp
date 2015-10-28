@@ -45,57 +45,33 @@ namespace mpl {
     // equality of types: really useful!
 
     // false by default
-    template<typename T, typename U>
-    struct equal_types : false_type {
-
-    };
+    template<typename T, typename U> struct equal_types : false_type { };
 
     // true only if they match
-    template<typename T>
-    struct equal_types<T, T> : true_type {
-
-    };
+    template<typename T> struct equal_types<T, T> : true_type { };
 
     // is_void:
     // check if the return type of a function is void!
-    template<typename T>
-    struct is_void : false_type {
-
-    };
+    template<typename T> struct is_void : false_type { };
 
     // specialization: on void
     // and cv variations of it (this is weird)
-    template<>
-    struct is_void<void> : true_type {
-
-    };
+    template<> struct is_void<void> : true_type { };
 
     // const void
-    template<>
-    struct is_void<const void> : true_type {
-
-    };
+    template<> struct is_void<const void> : true_type { };
 
     // cv void!!
-    template<>
-    struct is_void<const volatile void> : true_type {
-
-    };
+    template<> struct is_void<const volatile void> : true_type { };
 
     // volatile void
-    template<>
-    struct is_void<volatile void> : true_type {
-
-    };
+    template<> struct is_void<volatile void> : true_type { };
 
     // is_integral: check if a given type is
     // an integral type
 
     // false by default
-    template<typename T>
-    struct is_integral : false_type {
-
-    };
+    template<typename T> struct is_integral : false_type { };
 
     // many specializations:
     // char

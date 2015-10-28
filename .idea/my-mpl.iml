@@ -6,9 +6,14 @@
       <sourceFolder url="file://$MODULE_DIR$/abs.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/euclid.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/factorial.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/if.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/inspect.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/intops.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/power.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/remove_const.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sum.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/triangular_number.h" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

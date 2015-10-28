@@ -21,7 +21,13 @@ namespace mpl {
     // recursion: U could be an array type as well
     template<class U, size_t N>
     struct rank<U[N]> {
-        enum { value = 1u + rank<U>::value};
+        enum { value = 1u + rank<U>::value };
+    };
+
+    // unbounded array type
+    template<typename U>
+    struct rank<U[]> {
+        enum { value = 1u + rank<U>::value };
     };
 
     // identity metafunction

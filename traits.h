@@ -46,7 +46,7 @@ namespace mpl {
 
     template<typename T, int N>
     struct is_array<T[N]> : true_type { };
-    
+
 }
 
 #endif //MY_MPL_TRAITS_H

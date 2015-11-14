@@ -37,4 +37,5 @@ int main() {
     std::cout << mpl::has_arg_type<bool, decltype(g)>::value << std::endl; // false
     std::cout << mpl::has_arg_type<int, decltype(h)>::value << std::endl;
 
+    //std::cout << mpl::has_exact_arg_types<std::tuple<int, int, int>, decltype(f)>::value << std::endl;
 }

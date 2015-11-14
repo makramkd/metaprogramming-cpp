@@ -12,6 +12,11 @@ void g()
 
 }
 
+void h(int, double, long, long double)
+{
+
+}
+
 int main() {
 
     static_assert(mpl::arity_of<decltype(f)>::value == 3, "arity is 3!");
@@ -27,4 +32,9 @@ int main() {
     static_assert(mpl::args_have_type<void, decltype(g)>::value, "args have void!");
 
     std::cout << mpl::args_have_type<double, decltype(f)>::value << std::endl;
+
+    std::cout << mpl::has_arg_type<long double, decltype(h)>::value << std::endl;
+    std::cout << mpl::has_arg_type<bool, decltype(g)>::value << std::endl; // false
+    std::cout << mpl::has_arg_type<int, decltype(h)>::value << std::endl;
+
 }

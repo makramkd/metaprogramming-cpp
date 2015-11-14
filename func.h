@@ -62,10 +62,53 @@ namespace mpl {
     };
 
     // cases where we have no arguments and void as type to check
+    template<typename T, typename Ret>
+    struct args_have_type<T, Ret()>
+    {
+        static constexpr auto value = false;
+    };
+
     template<typename Ret>
     struct args_have_type<void, Ret()>
     {
         static constexpr auto value = true;
     };
+
+    // a useful alias template if i can get it right
+    template<typename T, typename Ret, typename... Args>
+    using args_have_type_v = typename args_have_type<T, Ret(Args...)>::value;
+
+    // check that one of the arguments to the function
+    // is of the given type
+    template<typename T, typename Ret, typename... Args>
+    struct has_arg_type;
+
+    template<typename T, typename Ret, typename Arg0, typename... Args>
+    struct has_arg_type<T, Ret(Arg0, Args...)>
+    {
+        static constexpr auto value = equal_types<T, Arg0>::value ? true : has_arg_type<T, Ret(Args...)>::value;
+    };
+
+    template<typename T, typename Ret, typename Arg>
+    struct has_arg_type<T, Ret(Arg)>
+    {
+        static constexpr auto value = equal_types<T, Arg>::value;
+    };
+
+    template<typename T, typename Ret>
+    struct has_arg_type<T, Ret()>
+    {
+        static constexpr auto value = false;
+    };
+
+    template<typename Ret>
+    struct has_arg_type<void, Ret()>
+    {
+        static constexpr auto value = true;
+    };
+
+    // useful alias template
+    template<typename T, typename Ret, typename... Args>
+    using has_arg_type_v = typename has_arg_type<T, Ret(Args...)>::value;
 }
 #endif //MY_MPL_FUNC_H

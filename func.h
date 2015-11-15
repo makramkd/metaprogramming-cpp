@@ -45,6 +45,17 @@ namespace mpl {
         static constexpr auto value = equal_types<T, Ret>::value;
     };
 
+    // metafunction that gets the return type of the given
+    // function (or decltype(f), more correctly)
+    template<typename>
+    struct return_type;
+
+    template<typename Ret, typename... Args>
+    struct return_type<Ret(Args...)>
+    {
+        using type = Ret;
+    };
+
     // check the argument types of a function against
     // a given type
     template<typename T, typename Ret, typename... Args>

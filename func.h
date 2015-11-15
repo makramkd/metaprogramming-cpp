@@ -112,23 +112,31 @@ namespace mpl {
     template<typename T, typename Ret, typename... Args>
     using has_arg_type_v = typename has_arg_type<T, Ret(Args...)>::value;
 
-    // check whether the given type list exactly matches the types (in order)
-    // that the given function takes in as arguments. The lists have to be
-    // of equal length, otherwise this won't work.
-    // as of now does not work: keeping it though, i might figure it out later
-//    template<typename Ret, typename... Types, typename... Args>
-//    struct has_exact_arg_types;
-//
-//    template<typename Ret, typename T0, typename... Types, typename Arg0, typename... Args>
-//    struct has_exact_arg_types<std::tuple<T0, Types...>, Ret(Arg0, Args...)>
-//    {
-//        static constexpr auto value = equal_types<T0, Arg0>::value && has_exact_arg_types<Types..., Ret(Args...)>::value;
-//    };
-//
-//    template<typename T, typename Ret, typename Arg>
-//    struct has_exact_arg_types<T, Ret(Arg)>
-//    {
-//        static constexpr auto value = equal_types<T, Arg>::value;
-//    };
+    // dummy template
+    template<typename Ret, typename... Args>
+    struct arithmetic_args;
+
+    // a template to determine whether the arguments
+    // of a function are all arithmetic types
+    template<typename Ret, typename Arg0, typename... Args>
+    struct arithmetic_args<Ret(Arg0, Args...)>
+    {
+        static constexpr auto value = std::is_arithmetic<Arg0>::value && arithmetic_args<Ret(Args...)>::value;
+    };
+
+    // end the recursion
+    template<typename Ret, typename Arg>
+    struct arithmetic_args<Ret(Arg)>
+    {
+        static constexpr auto value = std::is_arithmetic<Arg>::value;
+    };
+
+    // a function with no arguments has no arithmetic
+    // arguments (or is it vacuously true? no idea)
+    template<typename Ret>
+    struct arithmetic_args<Ret()>
+    {
+        static constexpr auto value = false;
+    };
 }
 #endif //MY_MPL_FUNC_H
